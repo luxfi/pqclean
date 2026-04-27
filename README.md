@@ -1,3 +1,7 @@
+> This is a luxfi-maintained fork of [PQClean/PQClean](https://github.com/PQClean/PQClean); see [LUXFI-FORK.md](./LUXFI-FORK.md) for sync policy.
+
+---
+
 # PQClean
 
 > [!WARNING]
