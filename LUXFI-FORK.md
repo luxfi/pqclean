@@ -4,26 +4,25 @@ This is a luxfi-maintained fork of [PQClean/PQClean](https://github.com/PQClean/
 
 ## Pin
 
-* Upstream branch: `master`
-* Commit SHA: `3730b32aa50ba9e712592c1476bdd048f5f6ed7e` (2026-01-09)
-* License: per-implementation (CC0 / public-domain / MIT / Apache-2.0). See
-  each `crypto_*/.../LICENSE` and `LICENSE` files in the tree.
+- Upstream master HEAD mirror: `3730b32aa50ba9e712592c1476bdd048f5f6ed7e`
+- License: per-implementation (CC0-1.0 for most, Apache-2.0 / MIT for some;
+  see each scheme's `LICENSE` file under `crypto_kem/<scheme>/<impl>/LICENSE`
+  and `crypto_sign/<scheme>/<impl>/LICENSE`)
 
 ## Why this fork exists
 
-PQClean ships clean reference implementations of NIST PQC finalists (ML-DSA,
-ML-KEM, SLH-DSA). luxcpp/crypto vendors these for `mldsa/`, `mlkem/`, and
-`slhdsa/` (LP-137 sibling #102). Owning the fork pins the reference impls so
-upstream churn (refactors, NIST round-update reshuffles) never silently breaks
-KAT vectors in luxcpp/crypto.
+luxcpp/crypto's `mldsa/`, `mlkem/`, and `slhdsa/` cpp bodies consume the
+clean reference implementations from PQClean to drive KAT tests and ensure
+specification conformance. Pinning to a luxfi-controlled mirror guarantees
+deterministic builds and protects against upstream history rewrites or
+removals.
 
 ## Sync policy
 
-* Track upstream `master` snapshots, NOT HEAD.
-* Pull upstream into `sync/<yyyy-mm-dd>` branches. Re-run all luxcpp/crypto
-  KAT suites for `mldsa`, `mlkem`, `slhdsa`. Merge to `master` only when KATs
-  match.
-* NIST round changes: update the pin, re-run KATs, tag as `pqclean-luxfi.<n>`.
+- Track upstream master at tagged release boundaries. Never auto-bump.
+- Pull upstream into `sync/<date>` branches.
+- Re-run mldsa, mlkem, slhdsa KAT suites before merging to `master`.
+- Do not modify clean implementations in this fork. Patches go upstream.
 
 ## Maintainer
 
